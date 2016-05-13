@@ -18,7 +18,7 @@ This is the main page of the web app. It lists all of the NPM issues.
 
 **URL** 
 ```
-http://0.0.0.0:8765/issues/{link_id}
+http://0.0.0.0:8765/issues/{issue_number}
 ```
 
 This is the URL where users can go and view the npm issue they're interested in.
