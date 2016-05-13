@@ -1,0 +1,21 @@
+.issues-content {
+
+  .body-text, .title-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .body-text {
+    width: 80%;
+  }
+
+  .title-text {
+    width: 660px;
+    color: black;
+  }
+
+  .footer-text {
+    color: #808080;
+  }
+}

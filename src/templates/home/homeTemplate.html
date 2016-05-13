@@ -1,0 +1,65 @@
+<div class="page-header text-center">
+  <h1>Vine Challenge <a href="/"><small>NPM Issues Viewer</small></a></h1>
+</div>
+
+<div class="container issues-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="list-group">
+        {{#issues}}
+        <li class="list-group-item">
+          <div>
+            <a href="issues/{{number}}">
+              <h4 class="list-group-item-text title-text">{{title}}</h4>
+            </a>
+            <div>
+            {{#labels}}
+              <span class="badge" style="background-color:#{{color}}">{{name}}</span>
+            {{/labels}}
+            </div>
+          </div>
+          {{#body}}<h6 class="list-group-item-text body-text">{{body}}</h6>{{/body}}
+          <h6 class="list-group-item-text footer-text"><a href="issues/{{number}}">#{{number}}</a> opened by 
+            {{#user}}
+            <a href="{{html_url}}">{{login}}</a>
+            <a href="{{html_url}}">
+              <img src="{{avatar_url}}" class="img-rounded" width="25" height="25">
+            </a>
+            {{/user}}
+          </h6>
+        </li>
+        {{/issues}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer text-center">
+  <nav>
+    <ul class="pagination">
+      {{#prevArrow}}
+        {{#state}}
+        <li class="page-item">
+          <a class="page-link" href="{{link}}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        {{/state}}
+      {{/prevArrow}}
+      {{#pageNumbers}}
+        <li class="page-item {{#active}}active{{/active}}"><a class="page-link" href="{{num}}">{{num}}</a></li>
+      {{/pageNumbers}}
+      {{#nextArrow}}
+        {{#state}}
+        <li class="page-item">
+          <a class="page-link" href="{{link}}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        {{/state}}
+      {{/nextArrow}}
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,64 @@
+<div class="page-header text-center">
+  <h1>Vine Challenge <a href="/"><small>NPM Issues Viewer</small></a></h1>
+</div>
+
+<div class="container issues-content">
+  <div class="row">
+    <div class="col-md-1">
+      <h3><span class="label {{#stateOpen}}label-success{{/stateOpen}}{{#stateClosed}}label-default{{/stateClosed}}">{{state}}</span></h3>
+    </div>
+    <div class="col-md-11">
+      <h3>{{title}} <span class="issue-number">#{{number}}</span></h3>
+      {{#labels}}
+        <span class="badge" style="background-color:#{{color}}">{{name}}</span>
+      {{/labels}}
+      <h6 class="list-group-item-text footer-text">#{{number}} opened by 
+        {{#user}}
+        <a href="{{html_url}}">{{login}}</a>
+        <a href="{{html_url}}">
+          <img src="{{avatar_url}}" class="img-rounded" width="25" height="25">
+        </a>
+        {{/user}}
+      </h6>
+    </div>
+  </div>
+  <hr class="m-y-2">
+  <div class="row">
+    <div class="col-md-1 col-md-offset-1">
+      {{#user}}
+      <a href="{{html_url}}">
+        <img src="{{avatar_url}}" class="img-rounded" width="60" height="60">
+      </a>
+      {{/user}}
+    </div>
+    <div class="col-md-8">
+      <div class="jumbotron">
+        {{#user}}
+        <h6 class="list-group-item-text footer-text"><a href="{{html_url}}">{{login}}</a> summarized</h6>
+        <hr class="m-y-2">
+        {{/user}}
+        <p>{{{body}}}</p>
+      </div>
+    </div>
+  </div>
+  {{#comments}}
+  <div class="row">
+    <div class="col-md-1 col-md-offset-1">
+      {{#user}}
+      <a href="{{html_url}}">
+        <img src="{{avatar_url}}" class="img-rounded" width="60" height="60">
+      </a>
+      {{/user}}
+    </div>
+    <div class="col-md-8">
+      <div class="jumbotron">
+        {{#user}}
+        <h6 class="list-group-item-text footer-text"><a href="{{html_url}}">{{login}}</a> commented</h6>
+        <hr class="m-y-2">
+        {{/user}}
+        <p>{{{body}}}</p>
+      </div>
+    </div>
+  </div>
+  {{/comments}}
+</div>
