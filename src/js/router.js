@@ -8,6 +8,8 @@ define([
   'views/error/404View'
 ], function($, _, Backbone, HomeView, IssueView, error404View) {
 
+  this.githubApiAccessToken = "db82690a2e997948d3082812dada9fa94cc8aab6";
+
   var AppRouter = Backbone.Router.extend({
     routes: {
       //Default Page
@@ -31,7 +33,8 @@ define([
     app_router.on('route:homePage', function(id) {
       console.log("Hit home page: /");
       var homeView = new HomeView({
-        id: id
+        id: id,
+        apiAccessToken: self.githubApiAccessToken
       });
       homeView.render();
     });
@@ -39,7 +42,8 @@ define([
     app_router.on('route:issuePage', function(id) {
       console.log("Hit issue page");
       var issueView = new IssueView({
-        issueId: id
+        issueId: id,
+        apiAccessToken: self.githubApiAccessToken
       });
       issueView.render();
     });

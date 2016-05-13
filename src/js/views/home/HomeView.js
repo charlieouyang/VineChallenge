@@ -18,6 +18,7 @@ define([
 
     initialize: function (opts) {
       this.currentPage = opts.id ? Number(opts.id) : 1;
+      this.apiAccessToken = opts.apiAccessToken;
     },
 
     render: function() {
@@ -29,12 +30,17 @@ define([
       var resultsData;
       var rendered;
 
-      repo = new Repo();
+      repo = new Repo({
+        apiAccessToken: this.apiAccessToken
+      });
       repo.fetch({
         success: function(repoModel) {
           pagination = self.determinePagination(repoModel.get("open_issues_count"));
 
-          collection = new Issues({ page: self.currentPage});
+          collection = new Issues({ 
+            page: self.currentPage,
+            apiAccessToken: self.apiAccessToken
+          });
           collection.fetch({
             success: function(issues) {
               resultsData = $.extend({}, pagination, { issues: issues.toJSON() });

@@ -19,12 +19,15 @@ define([
 
     initialize: function (opts) {
       var self = this;
+      this.apiAccessToken = opts.apiAccessToken;
 
       this.issueModel = new Issue({
-        id: opts.issueId
+        id: opts.issueId,
+        apiAccessToken: this.apiAccessToken
       });
       this.comments = new Comments({
-        id: opts.issueId
+        id: opts.issueId,
+        apiAccessToken: this.apiAccessToken
       });
     },
 

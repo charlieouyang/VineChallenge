@@ -29,6 +29,14 @@ This is the URL where users can go and view the npm issue they're interested in.
 
 Fork this repository, and clone it on your local machine.
 
+**Github Personal API Key**
+
+Navigate to /VineChallenge/src/js/router.js and replace my personal API access token (expired already) with one you generated. I had to use tokens because api.github.com thought I was DDOSing it. See this for more information as how to generate your token https://help.github.com/articles/creating-an-access-token-for-command-line-use/
+
+```
+this.githubApiAccessToken = "db82690a2e997948d3082812dada9fa94cc8aab6";
+```
+
 **npm**
 
 Navigate to the /VineChallenge folder and run 
