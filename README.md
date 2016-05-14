@@ -47,6 +47,8 @@ to install all of the dependencies for the web application.
 
 **grunt**
 
+Make sure grunt is installed. https://www.npmjs.com/package/grunt-cli
+
 Staying in the same /VineChallenge directory, run the command 
 ```
 grunt

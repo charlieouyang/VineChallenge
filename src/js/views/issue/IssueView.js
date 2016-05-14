@@ -66,7 +66,7 @@ define([
           });
         },
         error: function(error) {
-          console.log("Error fetching issue");
+          alert("Cannot fetch the issue information... Is the API token correct? Please refer to instructions in ReadMe");
         }
       });
     }

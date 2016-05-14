@@ -48,9 +48,12 @@ define([
               self.$el.html(rendered);
             },
             error: function(err) {
-              console.log("Error on fetch...");
+              alert("Cannot fetch issues... Is the API token correct? Please refer to instructions in ReadMe");
             }
           });
+        },
+        error: function(error) {
+          alert("Cannot fetch the npm repo information... Is the API token correct? Please refer to instructions in ReadMe");
         }
       });
     },
