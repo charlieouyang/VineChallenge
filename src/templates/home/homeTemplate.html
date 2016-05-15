@@ -5,6 +5,7 @@
 <div class="container issues-content">
   <div class="row">
     <div class="col-md-12">
+      {{#data}}
       <div class="list-group">
         {{#issues}}
         <li class="list-group-item">
@@ -27,9 +28,27 @@
             </a>
             {{/user}}
           </h6>
+          {{#commentsExist}}
+          <a href="issues/{{number}}">
+            <span class="btn btn-success comment-button" type="button">
+              Comments <span class="badge">{{comments}}</span>
+            </span>
+          </a>
+          {{/commentsExist}}
+          {{^commentsExist}}
+          <button class="btn btn-default disabled comment-button" type="button">
+            Comments <span class="badge">{{comments}}</span>
+          </button>
+          {{/commentsExist}}
         </li>
         {{/issues}}
       </div>
+      {{/data}}
+      {{^data}}
+      <div class="jumbotron">
+        <h3>Uh oh! This page doesn't exist :(</h3>
+      </div>
+      {{/data}}
     </div>
   </div>
 </div>

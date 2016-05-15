@@ -37,13 +37,29 @@ define([
         success: function(repoModel) {
           pagination = self.determinePagination(repoModel.get("open_issues_count"));
 
+          if (pagination === false) {
+            rendered = Mustache.to_html(homeTemplate, {
+              data: false
+            });
+            self.$el.html(rendered);
+            return;
+          }
+
           collection = new Issues({ 
             page: self.currentPage,
             apiAccessToken: self.apiAccessToken
           });
           collection.fetch({
             success: function(issues) {
+              issues.each(function(model){
+                commentCount = Number(model.get("comments"));
+                model.set({
+                  commentsExist: commentCount > 0
+                });
+              });
+
               resultsData = $.extend({}, pagination, { issues: issues.toJSON() });
+              resultsData.data = true;
               rendered = Mustache.to_html(homeTemplate, resultsData);
               self.$el.html(rendered);
             },
@@ -71,6 +87,10 @@ define([
       var lastPageNumberRelatively;
       var pageNum;
 
+      if (this.currentPage > totalNumberOfPages) {
+        return false;
+      }
+
       totalNumberOfSets = Math.ceil(totalNumberOfPages / pagesPerSet);
       currentSet = Math.ceil(this.currentPage / pagesPerSet);
 
@@ -84,6 +104,11 @@ define([
         }
       } else {
         lastPageNumberRelatively = totalNumberOfPages % pagesPerSet;
+
+        if (lastPageNumberRelatively === 0) {
+          lastPageNumberRelatively = 8;
+        }
+
         for (i = 1; i <= pagesPerSet && i <= lastPageNumberRelatively; i++) {
           pageNum = i + (Math.floor((this.currentPage - 1) / pagesPerSet)*pagesPerSet);
           allPageNumbers.push({
